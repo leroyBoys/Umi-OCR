@@ -24,7 +24,7 @@
   <a href="https://github.com/hiroi-sora/Umi-OCR/releases/latest">
     <img src="https://img.shields.io/github/v/release/hiroi-sora/Umi-OCR?style=flat-square" alt="Umi-OCR">
   </a>
-  <a href="License">
+  <a href="https://github.com/hiroi-sora/Umi-OCR/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/hiroi-sora/Umi-OCR?style=flat-square" alt="LICENSE">
   </a>
   <a href="#下载发行版">
@@ -64,14 +64,14 @@
 
 <div align="center">
   <strong>免费，开源，可批量的离线OCR软件</strong><br>
-  <sub>适用于 Windows7 x64 及以上</sub>
+  <sub>适用于 Windows7 x64 、Linux x64
 </div><br>
 
 - **免费**：本项目所有代码开源，完全免费。
 - **方便**：解压即用，离线运行，无需网络。
 - **高效**：自带高效率的离线OCR引擎，内置多种语言识别库。
 - **灵活**：支持命令行、HTTP接口等外部调用方式。
-- **功能**：截图OCR / 批量OCR / PDF识别 / 二维码 / 公式识别（[测试中](https://github.com/hiroi-sora/Umi-OCR/issues/254)）
+- **功能**：截图OCR / 批量OCR / PDF识别 / 二维码 / 公式识别
 
 <p align="center"><img src="https://tupian.li/images/2023/11/19/65599097ab5f4.png" alt="1-标题-1.png" style="width: 80%;"></p>
 
@@ -87,8 +87,8 @@
 - [文档识别](#文档识别) 从PDF扫描件中提取文本，或转为双层可搜索PDF
 - [全局设置](#全局设置)
 - [命令行调用](docs/README_CLI.md)
-- [HTTP接口](docs/README_HTTP.md)
-- [构建项目](#构建项目)
+- [HTTP接口](docs/http/README.md)
+- [构建项目（Windows、Linux）](#构建项目)
 
 ## 使用源码
 
@@ -96,11 +96,12 @@
 
 ## 下载发行版
 
-以下发布链接均长期维护，提供最新软件版本。
+以下发布链接均长期维护，提供稳定版本的下载。
 
 - **蓝奏云** https://hiroi-sora.lanzoul.com/s/umi-ocr （国内推荐，免注册/无限速）
 - **GitHub** https://github.com/hiroi-sora/Umi-OCR/releases/latest
 - **Source Forge** https://sourceforge.net/projects/umi-ocr
+
 
 <details>
 <summary><b>•&nbsp;&nbsp;Scoop Installer</b>（点击展开）</summary>
@@ -125,7 +126,7 @@ scoop install extras/umi-ocr-paddle
 - 不要同时安装二者，快捷方式可能会被覆盖。但您可以额外导入 [插件](https://github.com/hiroi-sora/Umi-OCR_plugins) ，随时切换不同OCR引擎。
 
 </details>
-
+</br>
 
 ## 开始使用
 
@@ -157,6 +158,7 @@ Umi-OCR v2 由一系列灵活好用的**标签页**组成。您可按照自己�
 - 左侧的图片预览栏，可直接用鼠标划选复制。
 - 右侧的识别记录栏，可以编辑文字，允许划选多个记录复制。
 - 也支持在别处复制图片，粘贴到Umi-OCR进行识别。
+- 关于 [公式识别](https://github.com/hiroi-sora/Umi-OCR/issues/254) 功能
 
 #### 文本后处理
 
@@ -246,8 +248,8 @@ Umi-OCR v2 由一系列灵活好用的**标签页**组成。您可按照自己�
 
 ## 调用接口：
 
-- 命令行手册： [README_CLI.md](docs/README_CLI.md)
-- HTTP接口手册： [README_HTTP.md](docs/README_HTTP.md)
+- [命令行手册](docs/README_CLI.md)
+- [HTTP接口手册](docs/http/README.md)
 
 --- 
 
@@ -263,9 +265,11 @@ Umi-OCR v2 由一系列灵活好用的**标签页**组成。您可按照自己�
 | [linzow](https://hosted.weblate.org/user/linzow)                | English, 繁體中文         |
 | [Eric Guo](https://hosted.weblate.org/user/qwedc001)            | English                   |
 | [steven0081](https://hosted.weblate.org/user/steven0081)        | English                   |
+| [Marcos i](https://hosted.weblate.org/user/ultramarkorj9)       | English                   |
 | [plum7x](https://hosted.weblate.org/user/plum7x)                | 繁體中文                  |
 | [hugoalh](https://hosted.weblate.org/user/hugoalh)              | 繁體中文                  |
 | [ドコモ光](https://hosted.weblate.org/user/umren190402)         | 日本語                    |
+| [杨鹏](https://hosted.weblate.org/user/ypf)                     | Português                 |
 
 如果有信息错误或人员缺漏，请在 [这个讨论](https://github.com/hiroi-sora/Umi-OCR/discussions/449) 中回复。
 
@@ -279,7 +283,8 @@ Umi-OCR v2 由一系列灵活好用的**标签页**组成。您可按照自己�
 
 - [主仓库](https://github.com/hiroi-sora/Umi-OCR) 👈
 - [插件库](https://github.com/hiroi-sora/Umi-OCR_plugins)
-- [Win 运行库](https://github.com/hiroi-sora/Umi-OCR_runtime_windows)
+- [Windows 运行库](https://github.com/hiroi-sora/Umi-OCR_runtime_windows)
+- [Linux 运行库](https://github.com/hiroi-sora/Umi-OCR_runtime_linux)
 
 ### 工程结构：
 
@@ -288,13 +293,10 @@ Umi-OCR v2 由一系列灵活好用的**标签页**组成。您可按照自己�
 ```
 Umi-OCR
 ├─ Umi-OCR.exe
+├─ umi-ocr.sh
 └─ UmiOCR-data
    ├─ main.py **
    ├─ version.py **
-   ├─ site-packages
-   │  └─ python包
-   ├─ runtime
-   │  └─ python解释器
    ├─ qt_res **
    │  └─ 项目qt资源，包括图标和qml源码
    ├─ py_src **
@@ -324,14 +326,10 @@ Umi-OCR
 
 ### 后续步骤：
 
-对于不同平台（虽然现在只有Windows），需要不同的运行环境。
+请跳转下述仓库，完成对应平台的开发/运行环境部署。
 
 - [Windows](https://github.com/hiroi-sora/Umi-OCR_runtime_windows)
-- 跨平台的支持筹备中
-
-请跳转上述仓库，完成对应平台的开发/运行环境部署。
-
-本项目也拥有非常简易的一键打包脚本，在以上仓库中查看。
+- [Linux](https://github.com/hiroi-sora/Umi-OCR_runtime_linux)
 
 ---
 
@@ -339,7 +337,7 @@ Umi-OCR
 
 Umi-OCR 项目主要由作者 [hiroi-sora](https://github.com/hiroi-sora) 用业余时间在开发和维护。如果您喜欢这款软件，欢迎赞助。
 
-- 国内用户可通过 [爱发电](https://afdian.net/a/hiroi-sora) 赞助作者。
+- 国内用户可通过 [爱发电](https://afdian.com/a/hiroi-sora) 赞助作者。
 
 ## Star History
 
@@ -382,11 +380,10 @@ Umi-OCR 项目主要由作者 [hiroi-sora](https://github.com/hiroi-sora) 用业
 
 </details>
 
-##### 即将进行的工作
+##### 正在进行的工作
 
-- [ ] 重构底层插件机制。
-- [ ] 在线 OCR API 插件。
-- [ ] 独立的数学公式识别插件。
+- [ ] Linux 平台移植。
+- [ ] HTTP 文档识别接口。
 
 ##### 远期计划
 
@@ -397,6 +394,9 @@ Umi-OCR 项目主要由作者 [hiroi-sora](https://github.com/hiroi-sora) 用业
 
 但开发途中受限于实际情况，可能更改功能设计、新增及取消功能。
 
+- [ ] 重构底层插件机制。
+- [ ] 在线 OCR API 插件。
+- [ ] 独立的数学公式识别插件。
 - [ ] “数学公式”标签页，提供独立的数学公式识别/Latex渲染。
 - [ ] 检查更新机制。
 - [ ] 排版解析之外的文本后处理模块（如保留数字、半全角字符转换、文本纠错）。

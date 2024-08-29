@@ -3,7 +3,7 @@
     "version": {
         "major": 2,
         "minor": 1,
-        "patch": 2,
+        "patch": 4,
         "prerelease": "",
         "prereleaseNumber": 0,
         "string": "自动生成"
@@ -53,6 +53,10 @@
                 {
                     "name": "steven0081",
                     "url": "https://hosted.weblate.org/user/steven0081"
+                },
+                {
+                    "name": "Marcos i",
+                    "url": "https://hosted.weblate.org/user/ultramarkorj9"
                 }
             ]
         },
@@ -95,6 +99,15 @@
                 {
                     "name": "ドコモ光",
                     "url": "https://hosted.weblate.org/user/umren190402"
+                }
+            ]
+        },
+        {
+            "language": "Português",
+            "translators": [
+                {
+                    "name": "杨鹏",
+                    "url": "https://hosted.weblate.org/user/ypf"
                 }
             ]
         }

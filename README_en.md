@@ -24,10 +24,10 @@
   <a href="https://github.com/hiroi-sora/Umi-OCR/releases/latest">
     <img src="https://img.shields.io/github/v/release/hiroi-sora/Umi-OCR?style=flat-square" alt="Umi-OCR">
   </a>
-  <a href="License">
+  <a href="https://github.com/hiroi-sora/Umi-OCR/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/hiroi-sora/Umi-OCR?style=flat-square" alt="LICENSE">
   </a>
-  <a href="#下载">
+  <a href="#download-releases">
     <img src="https://img.shields.io/github/downloads/hiroi-sora/Umi-OCR/total?style=flat-square" alt="forks">
   </a>
   <a href="https://star-history.com/#hiroi-sora/Umi-OCR">
@@ -43,11 +43,11 @@
 
 <div align="center">
   <h3>
-    <a href="#Usage:">
+    <a href="#usage">
       Usage
     </a>
     <span> • </span>
-    <a href="#Download Releases:">
+    <a href="#download-releases">
       Download Releases
     </a>
     <span> • </span>
@@ -253,8 +253,8 @@ About **OCR Text Post-Processing - Ignore Regions**: This is a special function 
 
 ## API Usage:
 
-- Command-line manual: [README_CLI.md](docs/README_CLI.md)
-- HTTP API manual: [README_HTTP.md](docs/README_HTTP.md)
+- [Command-line manual](docs/README_CLI.md)
+- [HTTP API manual](docs/http/README.md)
 
 ## About Project Structure
 

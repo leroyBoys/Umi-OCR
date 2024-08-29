@@ -29,7 +29,8 @@ LanguageCodes = {
     "ja_JP": "日本語",  # 日语
     "ko_KR": "한국어",  # 韩语
     "ru_RU": "Русский",  # 俄语
-    "pt_BR": "Português",  # 葡萄牙语
+    "pt": "Português",  # 葡萄牙语
+    "pt_BR": "Português",
     "pt_PT": "Português",
     "it_IT": "Italiano",  # 意大利语
     "nb_NO": "norsk",  # 挪威语
@@ -52,11 +53,11 @@ class _I18n:
             return
         if not translator.load(path):
             msg = f"无法加载UI语言！\n[Error] Unable to load UI language: {path}"
-            os.MessageBox(msg, type="warning")
+            os.MessageBox(msg, type_="warning")
             return
         if not qtApp.installTranslator(translator):  # 安装翻译器
             msg = f"无法加载翻译模块！\n[Error] Unable to installTranslator: {path}"
-            os.MessageBox(msg, type="warning")
+            os.MessageBox(msg, type_="warning")
             return
         print(f"翻译加载完毕。{self.langCode} - {text}")
 

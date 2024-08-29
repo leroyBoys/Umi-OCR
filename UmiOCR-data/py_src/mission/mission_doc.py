@@ -50,7 +50,7 @@ class _MissionDocClass(Mission):
             doc = fitz.open(msnPath)
         except Exception as e:
             return f"[Error] fitz.open error: {msnPath} {e}"
-        if doc.isEncrypted and not doc.authenticate(password):
+        if doc.is_encrypted and not doc.authenticate(password):
             if password:
                 msg = f"[Error] Incorrect password. 文档已加密，密码错误。 [{password}]"
             else:
@@ -62,23 +62,32 @@ class _MissionDocClass(Mission):
         msnInfo["sourceOnEnd"] = msnInfo["onEnd"] if "onEnd" in msnInfo else None
         msnInfo["onEnd"] = self._preOnEnd
         # =============== pageRange 页面范围 ===============
+        page_count = doc.page_count
         if len(pageList) == 0:
             if isinstance(pageRange, (tuple, list)) and len(pageRange) == 2:
                 a, b = pageRange[0], pageRange[1]
+                if a < 0:
+                    a += page_count + 1
+                if b < 0:
+                    b += page_count + 1
                 if a < 1:
                     return f"[Error] pageRange {pageRange} 范围起始不能小于1"
-                if b > doc.page_count:
+                if b > page_count:
                     return f"[Error] pageRange {pageRange} 范围结束不能大于页数 {doc.page_count}"
                 if a > b:
                     return f"[Error] pageRange {pageRange} 范围错误"
                 pageList = list(range(a - 1, b))
             else:
-                pageList = list(range(0, doc.page_count))
+                pageList = list(range(0, page_count))
         # 检查页数列表合法性
         if len(pageList) == 0:
             return "[Error] 页数列表为空"
-        if not all(isinstance(item, int) for item in pageList):
-            return "[Error] 页数列表内容非整数"
+        for p in pageList:
+            if not isinstance(p, int):
+                return "[Error] 页数列表内容非整数"
+            if not 0 <= p < page_count:
+                return f"[Error] 页数列表超出 1~{page_count} 范围"
+        msnInfo["pageList"] = pageList
         # =============== tbpu文本块后处理 msnInfo["tbpu"] ===============
         argd = msnInfo["argd"]  # 参数
         msnInfo["tbpu"] = []
@@ -90,11 +99,11 @@ class _MissionDocClass(Mission):
                 msnInfo["ignoreArea"]["obj"] = IgnoreArea(iArea)
                 # 范围，负数转为倒数第x页
                 igStart = argd.get("tbpu.ignoreRangeStart", 1)
-                igEnd = argd.get("tbpu.ignoreRangeEnd", doc.page_count)
+                igEnd = argd.get("tbpu.ignoreRangeEnd", page_count)
                 if igStart < 0:
-                    igStart += doc.page_count + 1
+                    igStart += page_count + 1
                 if igEnd < 0:
-                    igEnd += doc.page_count + 1
+                    igEnd += page_count + 1
                 msnInfo["ignoreArea"]["start"] = igStart - 1  # -1是将起始1页转为起始0页
                 msnInfo["ignoreArea"]["end"] = igEnd - 1
                 print(f"忽略区域范围： {igStart} ~ {igEnd}")
@@ -149,6 +158,9 @@ class _MissionDocClass(Mission):
                     # 图片视觉大小、原始大小、缩放比例
                     w1, h1 = bbox[2] - bbox[0], bbox[3] - bbox[1]
                     w2, h2 = t["width"], t["height"]
+                    # 特殊情况：图片宽高为0
+                    if w2 <= 0 or h2 <= 0:
+                        continue
                     # 单独计算宽高的缩放比例
                     scale_w = w1 / w2
                     scale_h = h1 / h2
@@ -278,7 +290,7 @@ class _MissionDocClass(Mission):
                 info = {
                     "path": path,
                     "page_count": doc.page_count,
-                    "is_encrypted": doc.isEncrypted,
+                    "is_encrypted": doc.is_encrypted,
                 }
                 return info
         except Exception as e:

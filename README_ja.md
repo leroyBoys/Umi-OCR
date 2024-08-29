@@ -24,7 +24,7 @@
   <a href="https://github.com/hiroi-sora/Umi-OCR/releases/latest">
     <img src="https://img.shields.io/github/v/release/hiroi-sora/Umi-OCR?style=flat-square" alt="Umi-OCR">
   </a>
-  <a href="License">
+  <a href="https://github.com/hiroi-sora/Umi-OCR/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/hiroi-sora/Umi-OCR?style=flat-square" alt="LICENSE">
   </a>
   <a href="#ダウンロード">
@@ -207,8 +207,8 @@ Umi-OCR v2 は、一連の柔軟で使いやすい**タブインターフェー�
 
 ## API の使用:
 
-- コマンドラインマニュアル: [README_CLI.md](docs/README_CLI.md)
-- HTTP API マニュアル: [README_HTTP.md](docs/README_HTTP.md)
+- [コマンドラインマニュアル](docs/README_CLI.md)
+- [HTTP API マニュアル](docs/http/README.md)
 
 ## プロジェクト構造について
 
